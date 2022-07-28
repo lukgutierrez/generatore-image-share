@@ -1,0 +1,13 @@
+#Como generar una imagen desde la misma app?
+-Posible Solucion:
+https://medium.com/flutter-community/export-your-widget-to-image-with-flutter-dc7ecfa6bafb
+https://www.facebook.com/pauloniadev/posts/pfbid023p9UwNe6AxnTStsseR33CePmMVHdvot61M5mShW8PbwUuvtRi5vbkvdV2gW7aRNkl
+https://www.youtube.com/watch?v=suDZs84ZFto
+-Todo llegan a la conclusion de utilizar RepaintBoundary.
+-What is REPAINTBOUNDARY?
+Es un widget que nos permite colorear correctamente un container y sin errores 
+y para exportar mi imagen voy a necesitar path provider.
+
+
+Example Coding!
+https://github.com/juanleondev/flutter_samples/blob/master/flutter_samples/lib/image_generator/view/image_generator_page.dart
