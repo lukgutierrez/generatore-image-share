@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:typed_data';
@@ -5,6 +7,7 @@ import 'dart:ui' as ui;
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -15,13 +18,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey _keyBoundary = GlobalKey();
-  Future<Uint8List> generateImage() async {
+
+  Future<Uint8List> _generateImage() async {
     final currentContext = _keyBoundary.currentContext;
     final boundary =
         currentContext!.findRenderObject() as RenderRepaintBoundary?;
     final image = await boundary!.toImage(pixelRatio: 3.0);
     final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-    return byteData!.buffer.asUint8List();
+
+    final directory = (await getExternalStorageDirectory());
+    Uint8List pngBytes = byteData!.buffer.asUint8List();
+    File imgFile = new File('$directory/screenshot.png');
+    imgFile.writeAsBytes(pngBytes);
+
+    return _generateImage();
   }
 
   @override
@@ -38,7 +48,8 @@ class _HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Share.share("https://github.com/");
+                 
+                  _generateImage();
                 },
                 child: Container(
                   child: Text("Generar Imagen"),
@@ -58,7 +69,7 @@ class Carta extends StatelessWidget {
     return Container(
       width: 200,
       height: 200,
-      color: Colors.green,
+      color: Colors.pink,
     );
   }
 }
