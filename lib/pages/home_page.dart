@@ -28,10 +28,10 @@ class _HomePageState extends State<HomePage> {
 
     final directory = (await getExternalStorageDirectory());
     Uint8List pngBytes = byteData!.buffer.asUint8List();
-    File imgFile = new File('$directory/screenshot.png');
+    File imgFile = new File('$directory.path/screenshot.png');
     imgFile.writeAsBytes(pngBytes);
 
-    return _generateImage();
+    return await _generateImage();
   }
 
   @override
@@ -48,7 +48,6 @@ class _HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
                 onPressed: () {
-                 
                   _generateImage();
                 },
                 child: Container(

@@ -11,3 +11,8 @@ y para exportar mi imagen voy a necesitar path provider.
 
 Example Coding!
 https://github.com/juanleondev/flutter_samples/blob/master/flutter_samples/lib/image_generator/view/image_generator_page.dart
+
+Solution:
+https://medium.com/flutter-community/flutter-sharing-files-using-share-package-45103d7a21cb
+https://github.com/himanshusharma89/sharefiles/blob/master/lib/main.dart
+https://medium.com/flutter-community/export-your-widget-to-image-with-flutter-dc7ecfa6bafb
